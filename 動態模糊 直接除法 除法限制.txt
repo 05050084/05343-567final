@@ -17,7 +17,7 @@ mf=fft2(m2);
 bmi=ifft2(fft2(bm)./mf);
 figure,fftshow(bmi,'abs');
 %除法限制
-d=0.02;
+d=0.02;%臨界值
 mf=fft2(m2);
 mf(find(abs(mf)<d))=1;
 bmi=ifft2(fft2(bm)./mf);

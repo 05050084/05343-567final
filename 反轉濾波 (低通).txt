@@ -1,0 +1,20 @@
+clear all;close all;
+w=imread('girl256.bmp');
+%低通濾波去除零值
+wf=fftshift(fft2(w));
+b=lbutter(w,20,2);
+wb=wf.*b;
+wba=abs(ifft2(wb));
+wba=uint8(255*mat2gray(wba));
+imshow(wba);
+%反轉濾波
+w1=fftshift(fft2(wba))./b;
+w2=w1.*lbutter(w1,80,10);%%第二個參數值越大越清晰但會有越多雜訊
+w2a=abs(ifft2(w2));
+figure,imshow(mat2gray(w2a));
+%反轉濾波限制除法
+d=0.001;%%越小越清晰但會有越多雜訊
+c=lbutter(w,20,2);c(find(c<d))=1;
+w3=fftshift(fft2(wba))./c;
+w3a=abs(ifft2(w3));
+figure,imshow(mat2gray(w3a));

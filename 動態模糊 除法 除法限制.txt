@@ -1,0 +1,24 @@
+clear all;
+close all;
+bc=imread('board.tif');
+bg=im2uint8(rgb2gray(bc));
+b=bg(100:355,50:305);
+imshow(b);
+%模糊化
+m=fspecial('motion',7,0);
+bm=imfilter(b,m);
+figure,imshow(bm);
+%補零
+m2=zeros(256,256);
+m2(1:7,1:7)=m;
+mf=fft2(m2);
+
+%直接進行除法
+bmi=ifft2(fft2(bm)./mf);
+figure,fftshow(bmi,'abs');
+%除法限制
+d=0.02;
+mf=fft2(m2);
+mf(find(abs(mf)<d))=1;
+bmi=ifft2(fft2(bm)./mf);
+figure,imshow(mat2gray(abs(bmi))*2);

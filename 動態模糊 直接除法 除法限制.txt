@@ -4,19 +4,19 @@ bc=imread('board.tif');
 bg=im2uint8(rgb2gray(bc));
 b=bg(100:355,50:305);
 imshow(b);
-%¼Ò½k¤Æ
+%æ¨¡ç³ŠåŒ–
 m=fspecial('motion',7,0);
 bm=imfilter(b,m);
 figure,imshow(bm);
-%¸É¹s
+%è£œé›¶
 m2=zeros(256,256);
 m2(1:7,1:7)=m;
 mf=fft2(m2);
 
-%ª½±µ¶i¦æ°£ªk
+%ç›´æ¥é€²è¡Œé™¤æ³•
 bmi=ifft2(fft2(bm)./mf);
 figure,fftshow(bmi,'abs');
-%°£ªk­­¨î
+%é™¤æ³•é™åˆ¶
 d=0.02;
 mf=fft2(m2);
 mf(find(abs(mf)<d))=1;

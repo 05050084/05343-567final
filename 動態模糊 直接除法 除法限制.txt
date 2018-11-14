@@ -10,7 +10,7 @@ bm=imfilter(b,m);
 figure,imshow(bm);
 %補零
 m2=zeros(256,256);
-m2(1:7,1:7)=m;
+m2(1:7,1:7)=m; %7*7
 mf=fft2(m2);
 
 %直接進行除法

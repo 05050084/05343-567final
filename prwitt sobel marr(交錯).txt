@@ -1,17 +1,17 @@
 t=imread('cameraman.tif');
-%prewittÂoªi¾¹
+%prewittæ¿¾æ³¢å™¨
 px=[-1 0 1;-1 0 1;-1 0 1];
 tx=filter2(px,t);
 figure,imshow(tx/255);
-%sobelÂoªi¾¹
+%sobelæ¿¾æ³¢å™¨
 edge_s=edge(t,'sobel');
 figure,imshow(edge_s);
 
-%¹s¥æ¿ù
+%é›¶äº¤éŒ¯
 log=fspecial('log',13,2); %13*13
-ma=edge(t,'zerocross',0.03,log); %­È0~1
+ma=edge(t,'zerocross',0.03,log); %å€¼0~1
 figure,imshow(ma);
 
 log=fspecial('log',7,1); %7*7
-mz=edge(t,'zerocross',0.9,log); %­È0~1
+mz=edge(t,'zerocross',0.9,log); %å€¼0~1
 figure,imshow(mz);

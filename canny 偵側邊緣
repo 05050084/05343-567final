@@ -1,0 +1,11 @@
+clear all;
+close all;
+
+a=imread('girl256.bmp');
+[iaa,t]=edge(a,'canny');
+
+figure,imshow(iaa);
+
+[ia,y]=edge(a,'canny',[0.08,0.2]); %t1 t2調整數值
+
+figure,imshow(ia);

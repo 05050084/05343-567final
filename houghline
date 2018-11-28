@@ -1,0 +1,14 @@
+c=imread('cameraman.tif');
+hc=hough(c);
+%imshow(mat2gray(hc)*1.5);
+
+max(hc(:)) %測量hc範圍
+
+[r,theta]=find(hc>100) %查看 r theta 值
+
+c2=imadd(imdivide(c,4),192);
+figure,imshow(c2);
+
+houghline(c2,147,169);
+houghline(c2,84,204);
+houghline(c2,86,205);

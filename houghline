@@ -9,6 +9,6 @@ max(hc(:)) %測量hc範圍
 c2=imadd(imdivide(c,4),192);
 figure,imshow(c2);
 
-houghline(c2,147,169);
+houghline(c2,147,169); %讀取 r theat值 在原圖上畫線
 houghline(c2,84,204);
 houghline(c2,86,205);

@@ -15,6 +15,6 @@ figure,imshow(tb1);
 tb2=imerode(~t,b2); %~not(0變1 1變0)
 figure,imshow(tb2);
 hit_or_miss=tb1&tb2; %tb1 tb2交叉去找
-[x,y]=find(hit_or_miss==1)
+[x,y]=find(hit_or_miss==1) %會跑出交集位置
 
 figure,imshow(hit_or_miss);

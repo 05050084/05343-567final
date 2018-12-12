@@ -1,0 +1,16 @@
+lear all;
+close all;
+
+t=imread('face.bmp');
+sq=ones(3,3);
+%侵蝕*2
+te=imerode(t,sq);
+tee=imerode(te,sq);
+figure,imshow(tee);
+%膨脹兩次
+td=imdilate(tee,sq);
+tdd=imdilate(td,sq);
+figure,imshow(tdd);
+%型態濾波 (關閉(打開))
+fco=imclose(imopen(t,sq),sq);
+figure,imshow(fco);

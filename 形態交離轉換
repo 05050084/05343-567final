@@ -9,7 +9,7 @@ tb1=imerode(t,b1);
 figure,imshow(tb1);
 
 tb2=imerode(~t,b2);
-hit_or_miss=tb1&tb2;
-[x,y]=find(hit_or_miss==1)
+hit_or_miss=tb1&tb2;%侵蝕後交集
+[x,y]=find(hit_or_miss==1)%交集位置
 
 figure,imshow(hit_or_miss);

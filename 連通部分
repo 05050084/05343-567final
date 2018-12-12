@@ -1,0 +1,11 @@
+clear all; 
+close all;
+
+n=imread('nicework.tif');
+sq=ones(3,3)
+figure,imshow(n);
+nf=components(n,[57,97],sq);
+figure,imshow(nf);
+sq2=ones(11,11)%當數字越大 可以使其他字接印出來(從多張圖變成一張)
+nz=components(n,[57,97],sq2);
+figure,imshow(nz);

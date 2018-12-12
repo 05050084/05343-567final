@@ -1,0 +1,20 @@
+clear all;  %形態交離轉換
+close all;
+
+t=imread('text.tif');
+b1=ones(2,2);
+b2=ones(4,4);   
+b2(2:3,2:3)=0;  %1111
+                %1001
+                %1001
+                %1111
+figure,imshow(t);
+tb1=imerode(t,b1);
+figure,imshow(tb1);
+
+tb2=imerode(~t,b2); %~not(0變1 1變0)
+figure,imshow(tb2);
+hit_or_miss=tb1&tb2; %tb1 tb2交叉去找
+[x,y]=find(hit_or_miss==1)
+
+figure,imshow(hit_or_miss);

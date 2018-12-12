@@ -4,7 +4,7 @@ close all;
 n=imread('nicework.tif');
 sq=ones(3,3)
 figure,imshow(n);
-nb=n&~imerode(n,ones(3,3));
+nb=n&~imerode(n,ones(3,3));%侵蝕
 figure,imshow(nb);
 nf=regfill(nb,[74,52],sq);
 %[74,52]->找到居域內的隨意一點 即可填滿 xy剛好相反

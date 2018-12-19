@@ -1,0 +1,12 @@
+clear all;
+close all;
+
+c=~imread('L9_2.bmp');
+
+figure,imshow(c);
+
+mask1=[Inf 1 Inf;1 0 Inf;Inf Inf Inf];
+
+cd=disttrans(c,mask1);
+cd2=ordfilt2(cd,5,[0 1 0;1 1 1;0 1 0]);
+figure,imshow((cd2<=cd)&~c);

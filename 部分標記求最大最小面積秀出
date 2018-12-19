@@ -7,12 +7,12 @@ figure,imshow(bt);
 
 bl=bwlabel(bt);
 c=max(bl(:));
-temp_min=inf;%很大的系統參數
-
+temp_min=inf;%inf->很大的系統參數
+%temp_min=0  求最大
 for( i=1:c)%找到最面積最小的參數
   a=(bl==i);
   temp=sum(a(:));%算面積
-  if temp_min>temp
+  if temp_min>temp  %temp_min<temp 求最大
     temp_min=temp %找到最小面積
     ind=i %找到最小的標記存入
   endif

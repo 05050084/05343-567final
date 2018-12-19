@@ -1,0 +1,25 @@
+clear all;
+close all;
+
+b=imread('bacteria.tif');
+bt=b<100;
+figure,imshow(bt);
+
+bl=bwlabel(bt);
+c=max(bl(:));
+temp_min=inf;%很大的系統參數
+
+for( i=1:c)%找到最面積最小的參數
+  a=(bl==i);
+  temp=sum(a(:));%算面積
+  if temp_min>temp
+    temp_min=temp %找到最小面積
+    ind=i %找到最小的標記存入
+  endif
+endfor
+
+s=(bl==ind);
+figure,imshow(s);%show出最小面積
+
+j=(bl==15); 
+figure,imshow(j);%show出標記15面積

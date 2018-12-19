@@ -1,0 +1,8 @@
+clear all;
+close all;
+mask1=[Inf 1 Inf;1 0 Inf;Inf Inf Inf];
+
+c=~imread('circles.tif'); %反白 前後景對換
+imshow(c);
+cd=disttrans(c,mask1);
+figure,imshow(mat2gray(cd));

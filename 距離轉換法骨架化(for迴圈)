@@ -1,0 +1,20 @@
+clear all;
+close all;
+
+c=imread('L9_2.bmp');
+
+figure,imshow(c);
+
+[m,n]=size(c)
+mask1=[Inf 1 Inf;1 0 Inf;Inf Inf Inf];
+
+cd=disttrans(1-c,mask1);
+skel=zeros(size(c));
+for i=2:m-1
+  for j=2:n-1
+    if cd(i,j)>=max([cd(i-1,j),cd(i+1,j),cd(i,j-1),cd(i,j+1)])
+         skel(i,j)=1;
+     endif
+  endfor
+endfor
+figure,imshow(skel&c);

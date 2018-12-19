@@ -1,10 +1,13 @@
 clear all;
 close all;
-
+%f=inline('x(5)&~(x(1)*x(2)*x(3)*x(4)*x(6)*x(7)*x(8)*x(9))');
+%8-邊界
 f=inline('x(5)&~(x(2)*x(4)*x(6)*x(8))');
-%表示先算好存表格
+%4-邊界
+%定義值
 %5代表中心值 2 4 6 8 表示其上下左右
-lut=makelut(f,3); %3*3 
+%中心1，2 4 6 8為0，找邊點
+lut=makelut(f,3); %3*3 makelut算好所有可能存表格
 c=imread('circles.tif');
 cw=applylut(c,lut); %查詢表格
 imshow(c);

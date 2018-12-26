@@ -1,0 +1,14 @@
+clear all;
+close all;
+c=imread('caribou.tif');
+imshow(c);
+[h,g,rh,rg]=daub(2);
+
+cw=wt2d(double(c),h,g,8);
+length(find(abs(cw)<=10))
+
+cw(find(abs(cw)<=10))=0;
+%iwt2d的156 174 193 的try注解掉
+cw=round(cw); %4捨5入
+ci=iwt2d(cw,rh,rg,8);
+figure,imshow(mat2gray(ci));

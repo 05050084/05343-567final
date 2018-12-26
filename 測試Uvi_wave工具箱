@@ -1,7 +1,7 @@
 %http://cas.ensmp.fr/~chaplais/UviWave/About_UviWave.html
 %載zip檔
 %把所有東西丟到image(包含資料夾內)
-
+% wt iwt的trasp注解掉
 clear all;
 close all;
 v=[71,67,24,26,36,32,14,18];

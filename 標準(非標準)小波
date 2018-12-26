@@ -1,0 +1,25 @@
+clear all;
+close all;
+c=imread('cameraman.tif');
+
+[h,g,rh,rg]=daub(2);
+cw1=wt2d(double(c),h,g,1);%2維小波(wt2d) 1尺度(1)
+m1=2.4*ones(2,2);
+m1(1,1)=1;
+m1=imresize(m1,128,'nearest');
+imshow(mat2gray(cw1).*m1)
+
+cw3=wt2d(double(c),h,g,3); %2維小波 3尺度
+m3=2.4*ones(8,8);
+m3(1,1)=1;
+m3=imresize(m3,32,'nearest');
+figure,imshow(mat2gray(cw3).*m3)
+
+cw2=wt(wt(double(c),h,g,2)',h,g,2)';%1維 轉置(標準分解法) 2尺度
+m2=2.4*ones(4,4);
+m2(1,1)=1;
+m2=imresize(m2,64,'nearest');
+figure,imshow(mat2gray(cw2).*m2)
+
+cw3=wt(wt(double(c),h,g,3)',h,g,3)';%1維 轉置(標準分解法) 3尺度
+figure,imshow(mat2gray(cw3).*m3)
